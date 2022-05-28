@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    e-mail: <input type="email" v-model="email">
+    <br>
+    password:<input type="password" v-model="pasword">
+    <h1>Twój e-mail to {{ email }}</h1>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
   }
 }
 </script>
