@@ -2,7 +2,8 @@
   <div id="app">
     <h1> Witaj w systemie do zapisów</h1>
     <div id ="form" v-if="!isLoginIn">
-    e-mail: <input type="email" v-model="email" @keyup.enter="alertMyEmail()">
+    e-mail: <input type="email" v-model="email" >
+      <!--     e-mail: <input type="email" v-model="email" @keyup.enter="alertMyEmail()"> -->
     <button @click="logIn()" >Wchodzę</button>
     </div>
    <!-- <div v-if="email.length < 10">Ale masz krótki adres!</div>
@@ -11,7 +12,7 @@
     <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button>
     <br> -->
     <div v-else="isLoginIn"><h1>Witaj {{ email }}</h1>
-      <br><a href="#" @click="logOut()">Wyloguj</a>
+      <br><a  @click="logOut()">Wyloguj</a>
     </div>
     
    <!-- password:<input type="password" v-model="password"> -->
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-
+import "milligram";
 
 export default {
   data() {
@@ -51,12 +52,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
