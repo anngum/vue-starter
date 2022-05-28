@@ -2,7 +2,7 @@
   <div id="app">
     <h1> Witaj w systemie do zapisów</h1>
    
-    <div id ="form" v-if="!isLoginIn">
+    <div id ="form" v-if="!authUser">
 	
 	 <login-form @login="logIn($event)"></login-form>
 	 
@@ -12,8 +12,9 @@
 
     </div>
 
-    <div v-else="isLoginIn"><h1>Witaj {{ email }}</h1>
-      <br><a href=#  @click="logOut()">Wyloguj</a>
+    <div v-else="authUser">
+	
+	<is-login @logout="logOut()" :username="authUser"></is-login>
     </div>
 
 
@@ -25,15 +26,16 @@
 import "milligram";
 
 import LoginForm from "./LoginForm";
+import IsLogin from "./IsLogin";
 
 export default {
-  components: {LoginForm},
+  components: {LoginForm, IsLogin},
 
   data() {
     return {
       email: '',
       password: '',
-      isLoginIn: false,
+      authUser: false,
 	  buttonLabel: ''
     };
   },
@@ -43,11 +45,11 @@ export default {
       alert(this.email);
     },
     logIn(username){
-      this.isLoginIn = username;
+      this.authUser = username;
 
     },
     logOut(){
-      this.isLoginIn = false;
+      this.authUser = false;
       this.email = '';
 
     }
